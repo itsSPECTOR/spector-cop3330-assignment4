@@ -1,0 +1,68 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+abstract FXML{
+    Provides menu options and choices for user input,
+    and displays tasks in a tableview.
+
+    private TableColumn<Task, Integer> id;
+    private TableColumn<Task, String> date;
+    private TableColumn<Task, String> desc;
+    private TableColumn<Task, String> name;
+    private TableColumn<Task, String> status;
+    private TableView<Task> tasktable;
+    private TextField addDate;
+    private TextField addDesc;
+    private TextField addStatus;
+    private TextField addTitle;
+}
+class App {
+    Sets the stage for the program
+    start(Stage stage) throws IOException
+    main(String[] args)
+}
+class Task{
+    Type task includes id: title, description, date, status.
+    Along with getters and setters.
+
+    public Task(int id, String title, String description, String date, String status)
+    public int getId()
+    public String getTitle()
+    public String getDescription()
+    public String getDate()
+    public String getStatus()
+    public void setId()
+    public void setTitle()
+    public void setDescription()
+    public void setDate()
+    public void setStatus()
+
+}
+class Controller{
+    Controller handles the inputs from the user and communnicates
+    data to the Task Class: add, remove, get and set.
+
+    public void closeProgram()
+    public ObservableList<Task>getTasks()
+    public void clearTable()
+    public void addTask()
+    public void removeTask()
+    public int trackID()
+    public void filterListComplete()
+    public void filterListIncomplete()
+    public void filterReset()
+    public void readCSV()
+    public void exportCSV()
+    public void initialize(URL location, ResourceBundle resources)
+    public void setEditable()
+}
+
+
+App -> FXML
+Task --> Controller
+Controller --> Task
+FXML -> Controller
+Controller -->FXML
+
+
+@enduml
